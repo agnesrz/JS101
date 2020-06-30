@@ -24,9 +24,8 @@ algorithm:
   -return new array
 */
 
-function stringToInteger(string) {
-  let array = string.split("");
-  let newArray = array.map(item => {
+function stringToNumber(string) {
+  let numberArray = string.split('').map(item => {
     switch (item) {
       case '0':
         return 0;
@@ -49,23 +48,27 @@ function stringToInteger(string) {
       case '9':
         return 9;
     }
-  }
-  );
+  });
+  
+  let result = 0;
+  
+  let counter = numberArray.length;
+  
+  let multiplier = 1;
+  
+  do {
+    result += numberArray[counter] * multiplier;
+    counter -= 1;
+    multiplier *= 10;
+  } while (counter > 0);
 
-  let result = newArray[0];
-  let y = 1;
-
-  while (y < newArray.length) {
-    result = result + "" + newArray[y];
-    y += 1;
-  }
-  console.log(typeof result);
-  return result;
+  console.log(result);
 }
 
-
-console.log(stringToInteger("4321")); 
-console.log(stringToInteger("570")); 
-
-console.log(stringToInteger("4321") === 4321); // logs true
-console.log(stringToInteger("570") === 570); // logs true
+stringToNumber('1998');
+/*
+console.log(stringToNumber("1998")); 
+console.log(typeof stringToNumber("1998")); 
+console.log(stringToNumber("4321") === 4321); // logs true
+console.log(stringToNumber("570") === 570); // logs true
+*/
