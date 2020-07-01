@@ -22,8 +22,9 @@ algorithm:
     -coerce all items in new array together
       -use reduce(method)
   -return new array
-*/
 
+
+// my solution
 function stringToNumber(string) {
   let numberArray = string.split('').map(item => {
     switch (item) {
@@ -49,26 +50,63 @@ function stringToNumber(string) {
         return 9;
     }
   });
-  
+
   let result = 0;
-  
+
   let counter = numberArray.length;
-  
+
   let multiplier = 1;
-  
+
+  console.log(numberArray[counter]);
+
   do {
-    result += numberArray[counter] * multiplier;
+    result += (numberArray[counter - 1] * multiplier);
     counter -= 1;
     multiplier *= 10;
   } while (counter > 0);
 
-  console.log(result);
+ return result;
+
 }
 
-stringToNumber('1998');
-/*
-console.log(stringToNumber("1998")); 
-console.log(typeof stringToNumber("1998")); 
 console.log(stringToNumber("4321") === 4321); // logs true
 console.log(stringToNumber("570") === 570); // logs true
 */
+
+// further exploration exercise
+const NUMCHART = {
+  0: 0,
+  1: 1,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5,
+  6: 6,
+  7: 7,
+  8: 8,
+  9: 9,
+  A: 10,
+  B: 11,
+  C: 12,
+  D: 13,
+  E: 14,
+  F: 15,
+  G: 16
+};
+
+function hexadecimalToInteger(string) {
+  let array = string.toUpperCase().split("").map(char => NUMCHART[char]);
+
+  let total = 0;
+  let counter = array.length - 1;
+
+  for (let ind = 0; ind < array.length; ind += 1) {
+    total += array[ind] * Math.pow(16, counter);
+    counter -= 1;
+  }
+
+  return total;
+}
+
+console.log(hexadecimalToInteger('4D9f') === 19871);
+console.log(hexadecimalToInteger('4D9f') === 19871);
