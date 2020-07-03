@@ -1,0 +1,48 @@
+** Exercise 11 **
+
+input: number
+output: string
+rules:
+  -assume input is non-negative integer
+  -do not use any standard conversion functions available in JavaScript
+  -create function that performs the conversion
+model: create a function that convert the input to a string  
+examples:
+  -integerToString(4321);      // "4321"
+  -integerToString(0);         // "0"
+  -integerToString(5000);      // "5000"
+  -integerToString(1234567890);      // "1234567890"
+data types: number, string
+algorithm:
+  -create an object called 'NUMBERS' in which each number from 0-9 is assigned to a different key
+  -create an array called 'allNumbersArray' that contains the digits 0-9 ([0, 1, 2 ...])
+  -create function integerToString with a paramater 'integer'
+  -check if the number is 0, as this is a special case
+    -if yes, log result to console & break
+  -determine how many digits the integer contains
+    -integerModified = integer
+    -'numOfDigits' = 0
+    -while integerModified > 0
+        -numOfDigits += 1
+        -integerModified /= 10
+  -determine what each digit is and save the digit to the array
+    -create array called 'resultsArray'
+    -use loop
+    -continue while numOfDigits > 0
+    -during each iteration
+      -integerModified *= 10
+      -loop through each number in allNumbersArray
+        -check if subtracting that number from integerModified results in a negative result
+          -if yes, push the number in previous index spot into the resultsArray (for example, if number is 2, push number 1 into the resultsArray)
+  -replace values in results array with strings
+    -use .forEach() method & NUMBERS object to replace digits with string
+    -OR:
+      -use array.join method (if does not break rules)
+      -in previous step ee if you can enclose number in string for shortcut
+  -log result to the console
+      
+
+          
+          
+  
+
