@@ -40,9 +40,40 @@ algorithm:
       -use array.join method (if does not break rules)
       -in previous step ee if you can enclose number in string for shortcut
   -log result to the console
-      
+  
+  
+ 
+ 
+ ** Exercise 12 **
 
-          
+input: number
+output: string
+rules:
+  -assume input is integer
+  -do not use any standard conversion functions available in JavaScript
+  -create function that performs the conversion
+model: create a function that convert the input to a string
+examples:
+  -console.log(signedIntegerToString(4321) === "+4321");
+  -console.log(signedIntegerToString(-123) === "-123");
+  -console.log(signedIntegerToString(0) === "0");
+data types: number, array, string
+algorithm:
+  -create an array whose index number corresponds with that same number, but in string form
+  -create signedIntegerToString function
+  -create result varaible and set to string ('')
+  -create variable 'negative' and set to false
+  -check if number is > 0
+    -if yes:
+      -set negative variable to true
+      -reassign number to -1 * number
+  -create do while loop that continues until number === 0
+    -create variable remainder and set equal to value of remainder of dividing number by 10
+    -add remiander to results variable 
+      -results = remainder + results
+    -reassign number to the value of dividing number by 10 and then using math floor to get rid of decimal
+  -if value is negative, add - sign to result
+  -return result
           
   
 

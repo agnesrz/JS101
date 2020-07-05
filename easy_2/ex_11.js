@@ -1,6 +1,3 @@
-let workingNum;
-let resultsArray = [];
-
 function getNumOfDigits(num) {
   let digits = 1;
   let numSubtract = 9;
@@ -13,30 +10,25 @@ function getNumOfDigits(num) {
 
 function integerToString(num) {
   let holderNum = num;
-  let digits = getNumOfDigits(num);
-  if (num === 0) {
-    console.log('0');
-  } else {
-    for (let i = digits; i > 0; i -= 1) {
-      workingNum = holderNum / Math.pow(10, (i - 1)); // formula moves decimal point to the left (i.e., 1234 => 1.234)
-      for (let y = 1; y < 10; y += 1) {
-        if (workingNum === 0) {
-          resultsArray.push(0);
-          break;
-        } else if ((workingNum - y) === 0) {
-          resultsArray.push(y);
-          holderNum = 0;
-          break;
-        } else if (workingNum - y < 0) {
-          resultsArray.push(y - 1);
-          holderNum -= ((y - 1) * Math.pow(10, i - 1)); //
-          break;
-        }
+  let resultsArray = [];
+  for (let i = getNumOfDigits(num); i > 0; i -= 1) {
+    let workingNum = holderNum / Math.pow(10, (i - 1)); // formula moves decimal point to the left (i.e., 1234 => 1.234)
+    for (let y = 1; y < 10; y += 1) {
+      if (workingNum === 0) {
+        resultsArray.push(0);
+        break;
+      } else if ((workingNum - y) === 0) {
+        resultsArray.push(y);
+        holderNum = 0;
+        break;
+      } else if (workingNum - y < 0) {
+        resultsArray.push(y - 1);
+        holderNum -= ((y - 1) * Math.pow(10, i - 1)); //
+        break;
       }
     }
-    console.log(resultsArray.join(''));
-
   }
+  console.log(resultsArray.join(''));
 }
 
 integerToString(4321);      // "4321"
