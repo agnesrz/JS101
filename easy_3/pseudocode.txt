@@ -1,0 +1,128 @@
+** exercise 1 ***********************************************************************
+input: string
+output: string
+rules:
+  -output should equal input minus any consecutive duplicate characters
+  -assume input is a string?
+  -assume that the output will always fit in your browser window.
+  -height of box will always be the same
+model: create a function that takes a string and returns the content of the string with consecutive duplicate characters removed
+examples:
+  -crunch('ddaaiillyy ddoouubbllee');    // "daily double"
+  -crunch('4444abcabccba');              // "4abcabcba"
+  -crunch('ggggggggggggggg');            // "g"
+  -crunch('a');                          // "a"
+  -crunch('');                           // ""
+data type: string
+algorithm:
+  -separate string elements into an array
+    -.split('')
+  -create results array
+  -create a variable 'previousValue'
+  -loop through the array
+    -if current value !== previousValue
+    -reassign previousValue variable to currentValue
+  -return results array
+    
+
+** exercise 2 ****************************************************************************
+input: string
+output: string [box containing input]
+rules: 
+  -input should be centered within the box
+  -when empty string, log:
+    +--+
+    |  |
+    |  |
+    |  |
+    +--+
+model: Given a string, print the string centered within a box
+examples:
+  logInBox('To boldly go where no one has gone before.');
+    +--------------------------------------------+
+    |                                            |
+    | To boldly go where no one has gone before. |
+    |                                            |
+    +--------------------------------------------+
+data type: string
+algorithm:
+  -Determine the dimensions of the box (perhaps function 'setBoxDimensions'):
+    -Determine the length of each line
+      -First line = '+-' + ('-' * string.length) + '-+'; etc
+      -To get the number of dashes or spaces:
+        -iterator = 0
+        -result = ''
+        -add "+-" or "  "
+        -while i < string.length
+          -add a space or dash to the result
+        -return result
+      -Note top and bottom border is identical, as is 2nd and 4th lines of box
+  -Print result to the console
+
+
+** exercise 2, further exploration 2 *********************************************************
+model: Given a string and a length requirement, print the string within a box. If the string is longer than the length specified, split the string into sections that fit within the length requriements and then print.
+algorithm:
+  -determine whether the string meets the length requirement
+  -if the string is too long, split the string into strings of allowable length
+    -see helper function below
+  
+  HELPER FUNCTION 1
+  -create a results array (let resultsArray = [])
+  -create variables
+    -let startValue = 0
+    -let endValue = maxCharLimit
+    -let continue = true
+  -separate string into words array
+    -create a while loop that continues while continue = true
+      -create variable continue2 and set to true
+      -create a nested for loop
+        -(let i = startValue; i < endValue - 1; i += 1)
+        -if (string[i] === undefined)
+          -continue === false
+          -coninue2 === false
+          -break;
+        push string[i] to resultArray
+      -create while loop that continues while continue2 === true
+        -IF string[endValue] === 0
+          -continue = false
+        -IF endValue is a letter AND the first character in the next array item will be a letter:
+          -push '-' instead of last character
+          -subtract 1 from startValue and endValue
+        -IF first character of next array item will be a space:
+          -add 1 to startValue and endValue (so that it is skipped)
+  
+  
+** exercise 3 *******************************************************************************
+input: number
+output: string
+rules:
+  -output should be string of 1's and 0's, staring with '1' 
+  -length of output should match length of input
+  -validate input?
+
+** exericse 4 *******************************************************************************
+problem: Create a function that calculates and returns the index of the first Fibonacci number that has the number of digits specified by the argument.
+input: number
+output: number
+rules:
+  -The first Fibonacci number has an index of 1
+model: Create an equation that calculates Fibonacci numbers. Perform the calculation until it returns the Fbonacci
+       number with the desired number of digits, while tracking how many times the calculation was performed.
+examples:
+  -findFibonacciIndexByLength(2);       // 7
+  -findFibonacciIndexByLength(10);      // 45
+  -findFibonacciIndexByLength(16);      // 74
+data type: number
+algorithm:
+  -Create a variable to track result of Fibonnaci sequence
+    -let firstNum = 1
+    -let secondNum = 2
+  -Create a variable to track the number of times the loop has run (and thus the index). Begin at 3 (since index of first number is 0, and we are starting at the second index)
+    -let indexSecondNum = 3
+  -Create a loop whose stopping condition is when secondNum is 2 digits
+    -String(secondNum).length === paramater
+  -Within loop, create an equation that calculates Fibonacci numbers
+    -set result to secondNum
+    -increase index by 1 at every loop
+  -return indexSecondNum;
