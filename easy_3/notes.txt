@@ -1,1 +1,2 @@
--return to Exercise 1, further exploration once I have studied regular expressions
+-Exercise 1, return to further exploration exercise once I have studied regular expressions
+-Exercise 4, I'm not certain I understood the ask in the further exploration exercise.
