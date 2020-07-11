@@ -1,58 +1,37 @@
 function century(year) {
-  let century = getCentury(year);
+  let century = Math.ceil(year / 100);
+  let suffix = getSuffix(century);
 
-  let suffix = getSuffix(year, century);
-  console.log(suffix);
-
-  console.log(`${century}${suffix} century`);
+  return century + suffix;
 }
 
-function getCentury(year) {
-  if (year < 101) {
-    return 1;
-  } else {
-    return Math.ceil(year / 100);
+function getSuffix(century) {
+  let centuryString = String(century);
+  
+  if ((centuryString.length > 1) && (centuryString[centuryString.length - 2] === '1')) {
+    centuryString = '0';
+  }
+  
+  let lastNum = centuryString[centuryString.length - 1];
+
+  switch (lastNum) {
+    case '1':
+      return 'st';
+    case '2':
+      return 'nd';
+    case '3':
+      return 'rd';
+    default:
+      return 'th';
   }
 }
 
-function getSuffix(year, century) {
-  if (century === 1) {
-    return 'st';
-  } else {
-    let numArray = numToArrayOfStrings(year);
-    let lastTwoNum = ((numArray.length - 2) + (numArray.length - 1));
-
-    switch (lastTwoNum) {
-      case '01':
-        return 'st';
-      case '02':
-        return 'nd';
-      case '03':
-        return 'rd';
-      default:
-        return 'th';
-    }
-  }
-}
-
-function numToArrayOfStrings(num) {
-  let numArray = [];
-  let index = 0;
-
-  do {
-    numArray.push(String(num)[index]);
-    index += 1;
-  } while (String(num)[index] !== 'undefined');
-
-  return numArray;
-}
-
-century(2000);        // "20th"
-century(2001);        // "21st"
-century(1965);        // "20th"
-century(256);         // "3rd"
-century(5);           // "1st"
-century(10103);       // "102nd"
-century(1052);        // "11th"
-century(1127);        // "12th"
-century(11201);       // "113th"
+console.log(century(2000));        // "20th"
+console.log(century(2001));        // "21st"
+console.log(century(1965));        // "20th"
+console.log(century(256));         // "3rd"
+console.log(century(5));           // "1st"
+console.log(century(10103));       // "102nd"
+console.log(century(1052));        // "11th"
+console.log(century(1127));        // "12th"
+console.log(century(11201));       // "113th"

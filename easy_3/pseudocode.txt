@@ -126,3 +126,64 @@ algorithm:
     -set result to secondNum
     -increase index by 1 at every loop
   -return indexSecondNum;
+  
+** exercise 9 *******************************************************************************
+input: string
+output: the same string with all non-alphabetic characters replaced by spaces
+rules:
+  -If one or more non-alphabetic characters occur in a row,
+  -you should only have one space in the result (i.e., the result string should never have consecutive spaces).
+model: Loop through the string and replace nonnumeric characters with a space. Then replace duplicate spaces with a single space, and trim the spaces from the result.
+example:
+  -cleanUp("---what's my +*& line?");    // " what s my line "
+algorithm:
+  -Iterate through string, replacing any special characters with a space.
+    -Use a while loop that continues until iterator (set to 0) is equal to the length of the strin
+  -WHILE there are two consecutive spaces:
+    -replace the double spaces with a single space
+    -use the replaceAll method
+  -trim the whitespace from the start and end of the string
+    -use the trim method
+  -return the result
+
+** exercise 10 ******************************************************************************
+input: year
+output: String that begins with the century number, and ends with 'st', 'nd', 'rd', or 'th' as appropriate for that number.
+rules:
+  -New centuries begin in years that end with 01. So, the years 1901 - 2000 comprise the 20th century.
+  -Assume input will be in the year AD
+model: Determine which century the number belongs to. Then determine what the suffix will be.
+examples:
+  century(2000);        // "20th"
+  century(2001);        // "21st"
+  century(1965);        // "20th"
+  century(256);         // "3rd"
+  century(5);           // "1st"
+  century(10103);       // "102nd"
+  century(1052);        // "11th"
+  century(1127);        // "12th"
+  century(11201);       // "113th"
+data type: number, string
+algorithm:
+  -set variables
+    -century = ''
+    -suffix = ''
+  -Determine the century:
+    -IF the number is below 101, century = 1
+    -ELSE:
+      century = Math.ceil(year / 100)
+  -Determine the suffix
+    -IF the century is the 1st, suffix = st
+    -ELSE
+      -Create an array that contains the individual digits of the year
+        -let numArray = []
+        -let index = 0
+        -WHILE index is not undefined {
+          -numArray.push(String(num)[index])
+          -increase index by 1
+      -Determine what the last two numbers of the century are
+        -IF 0, 4-19th => 'th'
+        -IF 01 => 'st'
+        -IF 02 => 'nd'
+        -IF 03 => 'rd'
+  -return the century plus the suffix plus the word 'century'
