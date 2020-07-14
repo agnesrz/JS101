@@ -1,18 +1,16 @@
 function century(year) {
-  let century = Math.ceil(year / 100);
+  let century = String(Math.ceil(year / 100));
   let suffix = getSuffix(century);
 
   return century + suffix;
 }
 
 function getSuffix(century) {
-  let centuryString = String(century);
+  let lastNum = century[century.length - 1];
   
-  if ((centuryString.length > 1) && (centuryString[centuryString.length - 2] === '1')) {
-    centuryString = '0';
+  if ((century.length > 1) && (century[century.length - 2] === '1')) {
+    lastNum = '0';
   }
-  
-  let lastNum = centuryString[centuryString.length - 1];
 
   switch (lastNum) {
     case '1':

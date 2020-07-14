@@ -1,0 +1,87 @@
+****** Exercise 3 *************************************************
+input: user's age, age at which user would like to retire
+output: string stating when user will retire
+rules:
+    -ask user to enter input
+    -follow this format for asking user for input:
+        -What is your age?
+        -At what age would you like to retire?
+    -follow this format for output:
+        -It's 2017. You will retire in 2057.
+        -You have only 40 years of work to go!
+model: Ask user to enter his/her current age and desired retirement age.
+        Calculate the difference between the retirement age and current age.
+        Add the difference to the current year. Then output the result of that calculation.
+example:
+    -age: 30; retirement age: 70; result: It's 2017. You will retire in 2057. You have only 40 years of work to go!
+algorithm:
+    -Create current age variable and set to result of asking user to enter their age
+        -use readline-sync
+    -Create retirement age variable and set to result of asking user to enter their desired retirement age
+        -use readline-sync
+    -Create current year variable and set to current year
+    -Create retirement year variable and sent to current year + difference between current and retirement age
+    -return result in template literal form
+    
+****** Exercise 4 *************************************************
+input: string   
+output: true, false
+rules:
+    -output true if string is a palindrome
+    -all characters matter
+    -case matters
+model: Split the string into two strings of equal length. Reverse the second string. If the first string and second string match, the string is a palindrome.
+examples:
+    isPalindrome('madam');               // true
+    isPalindrome('Madam');               // false (case matters)
+    isPalindrome("madam i'm adam");      // false (all characters matter)
+    isPalindrome('356653');              // true
+data type: string, array
+algorithm:
+    -Put the string into an array;
+        -Array.from();
+    -Reverse the array and convert back to a string
+        -use .reverse() and .join('') methods
+    -if the string is the same as the new string, it is a palindrome
+    
+****** Exercise 7 *************************************************
+input: array of numbers
+output: an array of the same length that includes a running total of the numbers in the original array
+rules:
+    -the value of each item in the new array is its original value plus the value of the number before it
+    -validate input?
+model: Given an array of numbers, push the first item in the array to an empty array. Then iterate through the given array,
+       adding each number in the given array to the last number in the new array, and pushing the result to the new array.
+examples: 
+    runningTotal([2, 5, 13]);             // [2, 7, 20]
+    runningTotal([14, 11, 7, 15, 20]);    // [14, 25, 32, 47, 67]
+    runningTotal([3]);                    // [3]
+    runningTotal([]);                     // []
+data type: number, array
+       
+****** Exercise 8 *************************************************
+input: string of words separated by 0 or more spaces
+output: object that shows the number of words of different sizes
+rules: words consist of any sequence of non-space characters
+model: Given a string of words, separate each word into an array. Then, replace each word with it's character length.
+        Sort the array according to chracter lengths and then determine how many items have the same value.
+        Store the result in an object.
+examples:
+    wordSizes('Four score and seven.');                       // { "3": 1, "4": 1, "5": 1, "6": 1 }
+    wordSizes('Hey diddle diddle, the cat and the fiddle!');  // { "3": 5, "6": 1, "7": 2 }
+    wordSizes("What's up doc?");                              // { "2": 1, "4": 1, "6": 1 }
+    wordSizes('');                                            // {}
+data type: string, array, object
+algorithm:
+    -separate each word into an array
+        -use .split()
+    -replace each word with it's length
+        -use .map()
+        -convert replacement back to string
+    -create an empty object
+    -iterate through the array
+        -use .forEach()
+        -check if there is a key that matches the current value
+            -if no, create a new key and set it's value to 1
+            -if yes, add one to it's value
+    -return the object
