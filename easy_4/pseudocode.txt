@@ -85,3 +85,14 @@ algorithm:
             -if no, create a new key and set it's value to 1
             -if yes, add one to it's value
     -return the object
+    
+****** Exercise 10 *************************************************
+input: string of words separated by spaces
+output: the same string of words, but with the first and last letter of each word swapped
+rules:
+    -Assume that every word contains at least one letter
+    -Assume that the string will always contain at least one word
+    -Assume that each string contains nothing but words and spaces
+    -Assume that there are no leading, trailing, or repeated spaces
+model: Separate the string into an array of words. Then, iterate through the array, swapping the first letter of each item with the last.
+        Then join the array elements and return the result.
