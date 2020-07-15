@@ -59,13 +59,23 @@ if (calc === 's') {
 // Corrections + Further Exploration
 const readlineSync = require('readline-sync');
 
-console.log('Please enter an array of integers:');
-let numbers = readlineSync.promptCL();
+console.log('Please enter an integer greater than 0');
+let num = Number(readlineSync.prompt());
 
-let regex = \[.*]
-
-while (numbers.includes('[')) {
-  numbers.replace(\[.*, .*);
+let numArray = [];
+for (let i = 1; i < (num + 1); i += 1) {
+  numArray.push(i);
 }
 
-console.log(numbers);
+console.log('Enter "s" to compute the sum, or "p" to compute the product: ');
+let calc = readlineSync.prompt();
+
+let result;
+
+if (calc === 's') {
+  result = numArray.reduce((accum, element) => accum + element);
+  console.log(`The sum of the integers between 1 and ${num} is ${result}.`);
+} else {
+  result = numArray.reduce((accum, element) => accum * element);
+  console.log(`The product of the integers between 1 and ${num} is ${result}.`);
+}

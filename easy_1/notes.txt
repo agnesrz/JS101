@@ -1,1 +1,1 @@
-Return to Exercise 6 'Further Exploration' problem after studying regular expressions
+I don't understand what the Exercise 6 'Further Exploration' problem is asking
