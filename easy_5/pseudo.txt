@@ -32,3 +32,13 @@ several solutions
   TWO
     -remove duplicates from first array
     -add elements from first array to second array as long as they are not already in the array
+    
+****************** Exercise 5 ******************
+input: two arrays
+output: a signle array containing all the values, ordered so that the values from each array alternate
+rules:
+  -assume the arrays are the same length
+  -assume that the arrays are not empty
+models:
+  -Create a loop that 
+  -Loop through both arrays, saving the value in each array to a new array on alternating turns
