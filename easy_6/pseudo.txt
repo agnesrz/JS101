@@ -1,0 +1,28 @@
+******** Exercise 1 ********
+input: string
+output: new string in which every character in the original string has been doubled
+rules: 
+model:
+examples:
+  repeater('Hello');        // "HHeelllloo"
+  repeater('Good job!');    // "GGoooodd  jjoobb!!"
+  repeater('');             // ""
+data type:
+algorithm: Sepearate each character into an array. Iterate over the array, creating a new array in which every 
+  character has been copied over two times
+  
+  
+******** Exercise 2 ********
+input: string
+output: new string in which every consonant in the original string has been doubled
+rules:
+  -don't double vowels, punctuation, digits, or whitespace
+model:
+examples:
+  doubleConsonants('String');          // "SSttrrinngg"
+  doubleConsonants('Hello-World!');    // "HHellllo-WWorrlldd!"
+  doubleConsonants('July 4th');        // "JJullyy 4tthh"
+  doubleConsonants('');                // ""
+data type: string, array
+algorithm: Sepearate each character into an array. Iterate over the array, creating a new array in which every 
+  character has been copied over two times
