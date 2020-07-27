@@ -1,3 +1,6 @@
 Exercise 5 - Return to the last futher exploration problem. Not sure how to solve at this point.
 Exercise 9 - Return to this problem. I don't understand some of the syntax in the solution. Perhaps
   this will be explained later in the course.
+Exercise 11 - Cannot get all test cases to test true. I think the problem is in the first
+  calculation in the minutesToHours function. 4321 / 60 has different result than expected.
+  Also, I skipped the further exploration part of this problem.  
