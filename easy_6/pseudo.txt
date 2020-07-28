@@ -26,3 +26,38 @@ examples:
 data type: string, array
 algorithm: Sepearate each character into an array. Iterate over the array, creating a new array in which every 
   character has been copied over two times
+
+******** Exercise 10 ********
+input: string
+output: new string in which words that are 5 char or longer will have letters reversed
+rules:
+  -input string:
+    -to contain 1 or more words
+    -words will separated by a space
+    -will consist of only letters and spaces
+    
+******** Exercise 12 ********
+input: string
+output: true or false
+rules:
+  -return true if all sets of parenthesis are matched
+  -return true if no parenthesis at all
+  -return false if sets of parenthesis do not match
+model: Test whether a string contains parenthesis. If yes, test to ensure first case is open parenthesis, and
+  next case is close parenthesis. Continue testing until there are no parenthesis left.
+examples:
+  console.log(isBalanced("What (is) this?") === true);
+  console.log(isBalanced("What is) this?") === false);
+  console.log(isBalanced("What (is this?") === false);
+  console.log(isBalanced("((What) (is this))?") === true);
+  console.log(isBalanced("((What)) (is this))?") === false);
+  console.log(isBalanced("Hey!") === true);
+  console.log(isBalanced(")Hey!(") === false);
+  console.log(isBalanced("What ((is))) up(") === false);
+data type: string, array
+algorithm:
+  -Test whether the string contains parenthesis. If no, return true.
+  -Loop through the string, extracting any parenthesis into an array.
+  -Loop through the array, testing whether the first item is an openening parenthesis, and the last is a closing
+    -If yes, move on to the next item and the second to last item (and continue in this pattern)
+    -If no, return false

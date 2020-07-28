@@ -60,5 +60,5 @@ function timeOfDay(minuteFormat) {
 //console.log(timeOfDay(-1437) === "00:03");
 //console.log(timeOfDay(3000) === "02:00");
 //console.log(timeOfDay(800) === "13:20");
-console.log(timeOfDay(4231)) // === "01:29");
+console.log(timeOfDay(-4231)) // === "01:29");
 console.log(timeOfDay(-1441)); // === "23:59"

@@ -1,0 +1,50 @@
+********** Exercise 1 **********
+Assignment: Write a function that takes one argument, a positive integer, and returns the sum of its digits.
+  Do this without using for, while, or do...while loops - instead, use a series of method calls to perform the sum.
+
+Input: positive integer
+Output: sum of digits
+Questions:
+  -Validate input?
+Rules:
+  -Do not use a loop; instead, use a series of method calls to perform the sum
+Examples:
+  sum(23);           // 5
+  sum(496);          // 19
+  sum(123456789);    // 45
+Data type: array, number
+Algorithm:
+  -Intialize a variable ('array') with the result of the following:
+    -Convert the number to a string
+    -Use the .split() method to separate each digit into an array
+  -Use the .reduce() method to convert each digit back into a number and to add all the digits together
+  -Return the result
+  
+********** Exercise 3 **********
+Assignment: Write a function that takes two array arguments, each containing a list of numbers, and returns
+  a new array containing the products of all combinations of number pairs that exist between the two arrays.
+  The returned array should be sorted in ascending numerical order.
+
+Input: two arrays
+Output: a new array containing all combinations of number pairs that exist between the two arrays
+Rules:
+  Explicit:
+    -Returned array should be sorted in ascending numerical order
+    -Assume that neither argument will contain an empty array
+  Implicit:
+    -Include duplicate products
+Examples:
+  multiplyAllPairs([2, 4], [4, 3, 1, 2]);    // [2, 4, 4, 6, 8, 8, 12, 16]
+Data type: number, array
+Algorithm:
+  -Initialize a new, empty array containing the products (result array)
+  -Initialize a new array equal to joining the two arguments together (allNumbers array)
+  -Loop through the allNumbers array (loop 1)
+    -Set iterations to the length of the array
+    -Set start value to 0
+    -Increment the start value by 1 during each iteration
+    -Loop through the allNumbers array (loop 2)
+      -Set iterations to the length of the array
+      -Set the start value to the current value (start value above) of loop 1 + 1
+      -During each iteration, push the product of the current value of loop 1 with the current value of loop 2
+  -Return the result

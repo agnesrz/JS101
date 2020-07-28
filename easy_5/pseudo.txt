@@ -42,3 +42,23 @@ rules:
 models:
   -Create a loop that 
   -Loop through both arrays, saving the value in each array to a new array on alternating turns
+
+****************** Exercise 12 ******************
+input: time in 24-hour format
+output: number of minutes after midnight
+Ask: Given a time in 24-hour format, return the number of minutes after midnight
+rules:
+  -do not use a Date class method
+  -value should be in the range of 0..1439
+  -disregard Daylight Savings and Standard Time and other irregularities.
+model: convert the hours to delta minutes
+examples:
+  console.log(afterMidnight("00:00") === 0);
+  console.log(afterMidnight("12:34") === 754);
+  console.log(afterMidnight("24:00") === 0);
+data type: number, array
+algorithm:
+  -convert input to array, where hours is at index 0 and minutes is at index 1
+  -convert hours to minutes
+    -multiply hours by number of minutes in an hour
+  -return hours converted to minutes added to minutes
