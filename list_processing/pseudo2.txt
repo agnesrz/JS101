@@ -1,0 +1,196 @@
+**** Exercise 4 ****
+Assignment: Write a function that takes a string argument, and returns a list of all substrings
+  that start from the beginning of the string, ordered from shortest to longest.
+
+Input: string
+Output: array containing all substrings of the original string that start from the beginning of the string
+Rules:
+  Explicit
+    -Order the string from shortest to longest
+  Implicit
+    -single character constitutes a substsring
+Data type: array
+Examples:
+  leadingSubstrings('abc');      // ["a", "ab", "abc"]
+  leadingSubstrings('a');        // ["a"]
+  leadingSubstrings('xyzzy');    // ["x", "xy", "xyz", "xyzz", "xyzzy"] 
+Algorithm:
+  1. Initialize an empty array. This will contain all the substrings (result array)
+  2. Get the first substring
+  3. Push it to the results array
+  4. Get the next substring
+  5. Push it to the results array
+  6. Continue steps 4-5 until all possible substrings are in the array
+  
+**** Exercise 5 ****  
+Assignment: Write a function that returns a list of all substrings of a string.
+  Order the returned list by where in the string the substring begins.
+  This means that all substrings that start at position 0 should come first,
+  then all substrings that start at position 1, and so on.
+  Since multiple substrings will occur at each position,
+  return the substrings at a given position from shortest to longest.
+  You may (and should) use the leadingSubstrings function you wrote in the previous exercise:
+
+Example:
+
+  substrings('abcde');
+  
+  // returns
+  [ "a", "ab", "abc", "abcd", "abcde",
+    "b", "bc", "bcd", "bcde",
+    "c", "cd", "cde",
+    "d", "de",
+    "e" ]
+    
+Input: String
+Output: All possible substrings
+Rules:
+  Explicit
+    -Order the reutrned list of substrings by where in the string the substring begins, from shortest to longest
+Data type: array, string
+Algorithm:
+  -Initialize an empty results array
+  -Loop through the string
+    -Create a variable to contain the current string
+      -The current string will begin at the index of the character in the loop
+      -Run the leadingSubstrings function on the current string
+      -Save the reuturn value to the result array
+    
+**** Exercise 6 ****  
+Assignment: Write a function that returns a list of all palindromic substrings of a string. 
+
+Input: String
+Output: Array of all palindromic substrings of the string
+Rules:
+  Explicit
+    -A palindrome is a sequence of characters that reads the same forward and backward
+    -The substrings in the returned list should be sorted by their order of appearance in the input string.
+    -Include any duplicate substrings
+    -Ok to use the substrings function from the previous exercise
+    -Case matters: 'AbcbA' is a palindrome, but 'Abcba' and 'Abc-bA' are not
+    -Assume that single characters are not palindromes
+  Implicit
+    -duplicate letters can be a palindrome ('ll')
+Data type: Array, string
+Algorithm:
+  1. Get an array containing all possible substrings
+    -use substrings function
+  2. Filter that array to include only pallindromes that are 2+ characters
+  3. Return the result
+  
+**** Exercise 7 ****
+Assignment: Write a function that takes an array of numbers, and returns the sum of the sums of each
+  leading subsequence for that array. You may assume that the array always contains at least one number.
+Examples:
+  sumOfSums([3, 5, 2]);        // (3) + (3 + 5) + (3 + 5 + 2) --> 21
+  sumOfSums([1, 5, 7, 3]);     // (1) + (1 + 5) + (1 + 5 + 7) + (1 + 5 + 7 + 3) --> 36
+  sumOfSums([4]);              // 4
+  sumOfSums([1, 2, 3, 4, 5]);  // 35
+  
+  
+Input: Array of numbers
+Output: Number representing the sum of each leading subsequence for that array
+Rules:
+  Explicit
+    -Assume the array always contains at least one number
+  Inplicit:
+    -Include the leading integer (alone) in the sum
+Algorithm:
+  -Initialize a results array
+  -Determine the sum of each leading subsequence
+    -Create an array that will contain all the sums of leading sequences
+    -Determine all possible leading sequences
+      -Create a loop that increments how long the leading sequence will be 
+        -in the first iteration, all the contents will be added together
+        -by the last iteration, only the first element will be returned
+        -Push the sum of each sequence to the results array
+  -Add the sums in the results array together
+  -Return the result
+  
+**** Exercise 8 ****
+Assignment: Write a function that takes a grocery list (a two-dimensional array) with each element
+  containing a fruit and a quantity, and returns a one-dimensional array of fruits,
+  in which each fruit appears a number of times equal to its quantity.
+
+Example:
+  buyFruit([['apple', 3], ['orange', 1], ['banana', 2]]);
+  // returns ["apple", "apple", "apple", "orange", "banana", "banana"
+  
+Input: Two-dimensional array containing a grocery item and it's quantity
+Output: One-dimensional array. In this array, a given grocery item will appear 'quantity' number of times.
+Algorithm:
+  -Initialize result array
+  -Loop through the grocery list array
+  -Push each item in the grocery list array to the result array 'quantity' number of times
+  -Return the result array
+  
+**** Exercise 9 ****
+Assignment: Write a function that takes two arguments, inventoryItem and transactions, and returns an array containing
+  only the transactions for the specified inventoryItem.
+  Examples:
+  let transactions = [ { id: 101, movement: 'in',  quantity:  5 },
+                       { id: 105, movement: 'in',  quantity: 10 },
+                       { id: 102, movement: 'out', quantity: 17 },
+                       { id: 101, movement: 'in',  quantity: 12 },
+                       { id: 103, movement: 'out', quantity: 20 },
+                       { id: 102, movement: 'out', quantity: 15 },
+                       { id: 105, movement: 'in',  quantity: 25 },
+                       { id: 101, movement: 'out', quantity: 18 },
+                       { id: 102, movement: 'in',  quantity: 22 },
+                       { id: 103, movement: 'out', quantity: 15 }, ];
+  
+  transactionsFor(101, transactions);
+  // returns
+  // [ { id: 101, movement: "in",  quantity:  5 },
+  //   { id: 101, movement: "in",  quantity: 12 },
+  //   { id: 101, movement: "out", quantity: 18 }, ]
+
+Input: inventroyItem and transaction (a value and an array)
+Ouput: an array containing the objects that corresponds to the input
+Rules:
+  Implicit
+    -inventoryItem is a value within an object. The key to the value is 'id'.
+Algorithm:
+  -Create an empty array that will contain the result
+  -Locate any objects within the transaction array that contain the inventoryItem
+    -Loop through the array. During each iteration:
+      -Check whether the item contains the inventoryItem
+      -If it does, push the object to the result array
+  
+**** Exercise 9 ****
+Assignment: Write a function that returns true or false based on whether or not
+  an inventory item is available.
+  
+Examples:
+  let transactions = [ { id: 101, movement: 'in',  quantity:  5 },
+                       { id: 105, movement: 'in',  quantity: 10 },
+                       { id: 102, movement: 'out', quantity: 17 },
+                       { id: 101, movement: 'in',  quantity: 12 },
+                       { id: 103, movement: 'out', quantity: 20 },
+                       { id: 102, movement: 'out', quantity: 15 },
+                       { id: 105, movement: 'in',  quantity: 25 },
+                       { id: 101, movement: 'out', quantity: 18 },
+                       { id: 102, movement: 'in',  quantity: 22 },
+                       { id: 103, movement: 'out', quantity: 15 }, ];
+  
+  isItemAvailable(101, transactions);     // false
+  isItemAvailable(103, transactions);     // false
+  isItemAvailable(105, transactions);     // true
+
+Input: An inventory item and a list of transactions (array)
+Output: True or False
+Rules:
+  -Return true only if the sum of the quantity values of the item's transactions
+    is greater than zero.
+  -A movement value of 'out' will decrease the item's quantity.
+  -Use the transactionsFor function from the previous exercise.
+Algorithm:
+  -Identify the objects that contain the inventory item
+    -use the transactionsFor function
+  -Initialize a variable for the quantity of the item (totalQuantity) to zero;
+  -In each object that contains the item, identify:
+    -the quantity of the item
+    -whether you should add or subtract the item
+    -the add or subtract the quantity to the totalQuantity variable
+  -Add or subtract the quantities based on the 'in' or 'out value
+  -If the result of the previous step is > 0, return "true"; otherwise, return false

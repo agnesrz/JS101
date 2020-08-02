@@ -1,0 +1,16 @@
+**** Exercise 3 ****
+
+Assignment: Write a function that takes a string and returns an object containing three properties:
+  one representing the number of characters in the string that are lowercase letters,
+  one representing the number of characters that are uppercase letters,
+  and one representing the number of characters that are neither.
+  
+Input: String
+Output: Object containing 3 properties (properties represt num of characters that are lowercase, uppercase, and neither)
+Algorithm:
+  -Create three variables (one for each property). They will represent chars that are lowercase, uppercase, or neither
+  -Loop through string. During each iteration:
+    -Test to see whether character is lowercase, uppercase, or neither
+    -Add 1 to the appropriate variable (the one that represents the value the test returned true for)
+  -Create an object
+  -Add the properties
