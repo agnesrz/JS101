@@ -1,0 +1,2 @@
+Exercise 8 - In the given solution, I don't understand the guard
+             clause syntax or the note about the arguments object

@@ -1,0 +1,91 @@
+********************** Exercise 1 **********************
+Assignment: Write a function that rotates an array by moving the first element to the end of the array.
+
+Input: array
+Output: a deep copy of the array, with the first element moved to the end of the array
+Rules:
+  -Do not modify the original array
+  -If the input is not an array, return undefined
+  -If the input is an empty array, return an empty array
+  -The array may contain any data type
+  -** correct that we can assume that the array will no contain any coplex objects?
+Examples: see the end of this page
+Data type: Array, objects, primitive values
+Algorithm:
+  -Check whether the input is an array
+  -Create a deep copy of the array
+  -Move the first element to last position in the array
+
+
+Examples & Test Cases
+  rotateArray([7, 3, 5, 2, 9, 1]);       // [3, 5, 2, 9, 1, 7]
+  rotateArray(['a', 'b', 'c']);          // ["b", "c", "a"]
+  rotateArray(['a']);                    // ["a"]
+  rotateArray([1, 'a', 3, 'c']);         // ["a", 3, "c", 1]
+  rotateArray([{ a: 2 }, [1, 2], 3]);    // [[1, 2], 3, { a: 2 }]
+  rotateArray([]);                       // []
+  
+  // return `undefined` if the argument is not an array
+  rotateArray();                         // undefined
+  rotateArray(1);                        // undefined
+  
+  
+  // the input array is not mutated
+  let array = [1, 2, 3, 4];
+  rotateArray(array);                    // [2, 3, 4, 1]
+  array;                                 // [1, 2, 3, 4]
+  
+
+********************** Exercise 2 **********************
+Assignment: Write a function that rotates the last count digits of a number
+
+Input: Number (represents number), Number (represents the digit you want to move to the end)
+Output: Number, where the last digit has been moved to the  
+Rules:
+  -To perform the rotation, move the first of the digits that you want to rotate
+   to the end and shift the remaining digits to the left.
+  -The second input number refers to the digit you wnat to move to the end STARTING FROM THE RIGHT (i.e.,
+   an input of '1' refers to the rightmost digit.
+Examples:
+  rotateRightmostDigits(735291, 1);      // 735291
+  rotateRightmostDigits(735291, 2);      // 735219
+  rotateRightmostDigits(735291, 3);      // 735912
+  rotateRightmostDigits(735291, 4);      // 732915
+  rotateRightmostDigits(735291, 5);      // 752913
+  rotateRightmostDigits(735291, 6);      // 352917
+Algorithm:
+  -Convert the first number to an array
+  -Copy the element that you want to move
+  -Remove that element
+  -Add the element to the end of the array
+  -Join the array
+
+********************** Exercise 3 **********************
+Assignment: Write a function that takes an integer as an argument, and returns the maximum rotation of that integer.
+
+Input: Integer (Number)
+Output: Maximum rotation of that integer (Number)
+Rules:
+  -use the rotateRightmostDigits function from the previous exercise
+  -to get the maximum rotation of an integer:
+    1. Rotate the integer by one digit to the left (i.e., 735291 => 352917)
+    2. Keep the first digit fixed in place and rotate the remaining digits (329175)
+    3. Keep the first two digits fixed in place and rotate again (321759)
+    4. Keep the first three digits fixed in place and rotate again (321597)
+    5. Keep the first four digits fixed in place and rotate the final two digits (321579)
+    6. Return the result
+Examples:
+  maxRotation(735291);          // 321579
+  maxRotation(3);               // 3
+  maxRotation(35);              // 53
+  maxRotation(105);             // 15 -- the leading zero gets dropped
+  maxRotation(8703529146);      // 7321609845
+Algorithm:
+  -Create a variable to store the current value of the string (currentValue). Set it = to the number in string form
+  -Create a loop that continues until the iterator is < 0.
+   The iterator starts at string.length - 1 and decreased by 1 during each loop.
+  -During each iteration:
+    -Move the item at index iterator to the end of the string
+    -Add the new value at index 0 to the result string
+    -Save result to currentValue
+  -Return result
