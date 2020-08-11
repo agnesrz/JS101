@@ -1,0 +1,164 @@
+********* Exercise 1 *********
+Assignment: Write a function that takes a string, and returns an object containing the following three properties:
+              -the percentage of characters in the string that are lowercase letters
+              -the percentage of characters that are uppercase letters
+              -the percentage of characters that are neither
+              -You may assume that the string will always contain at least one character.
+              
+Input: String
+Ouput: Object that contains three properties:
+          -percentage of characters that are lowercase
+          -percentage of characters that are uppercase
+          -percentage of characters that are neither
+Rules:
+  -Assume string will always contain at least one character
+  -Percentage should be in string form and include two decimal places
+  -Spaces count as characters
+  
+Examples:
+  letterPercentages('abCdef 123');                                     
+  // { lowercase: "50.00", uppercase: "10.00", neither: "40.00" }
+  
+  letterPercentages('AbCd +Ef');
+  // { lowercase: "37.50", uppercase: "37.50", neither: "25.00" }
+  
+  letterPercentages('123');
+  // { lowercase: "0.00", uppercase: "0.00", neither: "100.00" }
+  
+  Algorithm:
+    -Intialize an object with the keys 'lowercase', 'uppercase', and 'neither'
+    -Initialize an array with the characters of the string argument
+    -Initialize variables that will be later used to hold the count of uc, & lc characters
+    -Loop through the array and count the number of uppercase and lowercase letters
+    -Calculate the percentage of uc, lc, and neither characters and add it to the object
+      -use string.length
+    -Return the object
+    
+
+********* Exercise 2 *********
+Assignment: Write a function that takes the lengths of the three sides of a triangle as arguments, and returns the triangle's classification.
+
+Input: (3) lenghts of the triangle
+Output: String classifying triangle
+Rules:
+  -Input will be number?
+  -Triangle classifications include: 'equilateral', 'isosceles', 'scalene', or 'invalid'.
+    -Equilateral: All three sides are of equal length.
+    -Isosceles: Two sides are of equal length, while the third is different.
+    -Scalene: All three sides are of different lengths.
+    -Invalid: Any of the following characteristics are not met:
+      -ShortSide 1 + ShortSide 2 must be > than length of the longest side
+      -Every side must have a length greater than 0.
+Examples:
+  triangle(3, 3, 3);        // "equilateral"
+  triangle(3, 3, 1.5);      // "isosceles"
+  triangle(3, 4, 5);        // "scalene"
+  triangle(0, 3, 3);        // "invalid"
+  triangle(3, 1, 1);        // "invalid"
+
+Algorithm: 
+  -Sort input from smallest to largest
+  -Check if triangle is invalid
+  -Check other criteria
+  
+********* Exercise 3 *********
+Assignment: Create a function that classifies the angle
+
+Input: (3) degrees of the triangle
+Output: String classifying triangle
+Rules:
+  -Assume arguments are in degrees
+  -Assume all angles have integer values
+  -To be valid:
+    -Sum of the angles must be 180 degrees
+    -Every angle must be greater than 0
+  -Classifications include:
+    -invalid
+    -right: One angle is exactly 90 degrees
+    -acute: All angles are less than 90 degrees
+    -obtuse: One angle is greater than 90 degrees
+Examples:
+  triangle(60, 70, 50);       // "acute"
+  triangle(30, 90, 60);       // "right"
+  triangle(120, 50, 10);      // "obtuse"
+  triangle(0, 90, 90);        // "invalid"
+  triangle(50, 50, 50);       // "invalid"
+Algorithm:
+  -Check if triangle is invalid
+  -check for other conditions
+  
+  
+********* Exercise 4 *********
+Assignment: Write a function that takes a year as an argument, and returns the number of Friday the 13ths in that year.  
+
+Input: A year (post 1752)
+Ouput: The number of Friday the 13ths in that year
+Rules:
+  -Assume the year is post 1753
+  -Assume that the modern Gregorian Calendar will remain in use
+  -
+Examples / Test Cases:
+  fridayThe13ths(1986);      // 1
+  fridayThe13ths(2015);      // 3
+  fridayThe13ths(2017);      // 2
+  
+Algorithm:
+  -Initialize a variable (count) to count the number of Friday the 13ths to 0
+  -Iterate over all the months of the given year
+  -Find the date that falls on the 13th
+    -.getDay()
+  -If it is a Friday, increase count by one
+  -Return the count
+  
+  
+********* Exercise 5 *********  
+Assignment: Write a function that takes an integer as an argument, and returns the next featured number
+  greater than the integer. Issue an error message if there is no next featured number.
+
+Input: Intger
+Output: Next featured number or error if there is none
+Rules:
+  -A featured number is a number that meets these criteria:
+    -odd number
+    -multiple of 7
+    -digits occur no more than once
+  -The largest possible featured number is 9876543201
+  -Ok to assume no negative numbers?
+
+Examples / Test Cases:
+  featured(12);           // 21
+  featured(20);           // 21
+  featured(21);           // 35
+  featured(997);          // 1029
+  featured(1029);         // 1043
+  featured(999999);       // 1023547
+  featured(999999987);    // 1023456987
+  featured(9876543200);   // 9876543201
+  featured(9876543201);   // "There is no possible number that fulfills those requirements."
+
+Algorithm: 
+  -Initialize a 'featuredNum' variable to 7
+  -Check whether that number meets all the criteria of a featured number, and is larger than the input integer
+    -If yes, return number
+    -If no, increase 'featuredNum' by 
+    
+    
+********* Exercise 6 *********      
+Assignment: Write a function that computes the difference between the square of the sum of the first count positive integers
+  and the sum of the squares of the first count positive integers.
+
+Input: Integer
+Output: Number that represents (square of the sum of the integers begining with 1 and ending with input integer) -
+                               (sum of the squares of the integers beginning with 1 and ending with input integer)
+Algorithm:
+  -Calculate the sum of the integers
+  -Square the result
+  -Calculate the sum of the squares of the integers
+  -Calculate and return the difference
+
+
+Examples / Test Cases:
+  sumSquareDifference(3);      // 22 --> (1 + 2 + 3)**2 - (1**2 + 2**2 + 3**2)
+  sumSquareDifference(10);     // 2640
+  sumSquareDifference(1);      // 0
+  sumSquareDifference(100);    // 25164150
