@@ -1,0 +1,2 @@
+Exercise 1: In the solution, why is replaceText function called without parenthesis? 
+  -Nevermind, I get it. See MDM. Match gets passed to function as an argument.

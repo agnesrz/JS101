@@ -74,24 +74,27 @@ longestSentence("To be or not to be! Is that the question?");
 //              How about the sentence with the longest word?
 
 function longestParagraph(text) {
-  let paragraph = text.split('\n');
+  return text.split('\n').reduce((accu, curVal) => {
+    return accu.length > curVal.length ? accu : curVal;
+  });
+}
+
+function sentenceWLongestWord(text) {
   let sentences = text.match(/\w.*?[.!?]/g);
   let words = sentences.map(sentence => sentence.split(' '));
-
-  let longestParagraph = paragraph => {
-      return paragraph[0].length > paragraph[1].length ? paragraph[0] : paragraph[1];
   
-  let longestWord = words.reduce((acc, currentWord, index) => {
-    if (currentWord.length > acc.word.length) {
-      acc.word = currentWord;
-      acc.index = index;
-    }  
-  }, {word: '', index: 0}
-  );
-
-
-  console.log(`The longest paragraph is ${longestParagraph}\n`);
-  console.log(`The sentence with the longest word is ${longest.sentence}`);
+  function getLongestWord(wordsArray) {
+    return wordsArray.slice().reduce((acc, currWord) => {
+      return acc.length > currWord.length ? acc : currWord;
+      });
+  }
+  
+  return words.reduce((acc, currSent, index) => {
+    let accLongestWord = getLongestWord(acc);
+    let currLongestWord = getLongestWord(currSent);
+    
+    return accLongestWord.length > currLongestWord.length ? acc : currSent;
+  }).join(' ');
 }
 
 let longText =
@@ -119,7 +122,7 @@ let longText =
   'and that government of the people, by the people, for the people, ' +
   'shall not perish from the earth.';
 
-longestParagraph(longText);
+//console.log(longestParagraph(longText));
 // "But, in a larger sense...""
-//
-// The sentence with the longest word is
+
+console.log(sentenceWLongestWord(longText));
