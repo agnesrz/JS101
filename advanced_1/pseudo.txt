@@ -18,3 +18,81 @@ Algorithm:
   -Take the second  value... to create the second sub-array...
   -Take the third value... to create the third sub-array...
 
+************** Exercise 4 **************
+
+Top First   => Top Last
+Top Mid     => Mid Last
+Top Last    => Last Last
+
+Mid First   => First Mid
+Mid Mid     => Mid Mid
+Mid Last    => Bottom Mid
+
+Bottom First=> Top First        
+Bottom Mid  => Mid First
+Bottom Last => Bottom First
+
+Column 0, Row 0 =>  Column 2, Row 0
+Column 1, Row 0 =>  Column 2, Row 1
+Column 2, Row 0 =>  Column 2, Row 2
+
+Column 0, Row 1 =>  Column 1, Row 0
+Column 1, Row 1 =>  Column 1, Row 1
+Column 2, Row 1 =>  Column 1, Row 2
+
+Column 0, Row 2 =>  Column 0, Row 0
+Column 1, Row 2 =>  Column 0, Row 1
+Column 2, Row 2 =>  Column 0, Row 2
+
+****** the above rearranged
+Column 0, Row 0 => Column 0, Row 2
+Column 0, Row 1 => Column 1, Row 2
+Column 0, Row 2 => Column 2, Row 2
+
+Column 1, Row 0 => Column 0, Row 1
+Column 1, Row 1 => Column 1, Row 1
+Column 1, Row 2 => Column 2, Row 1
+
+Column 2, Row 0 => Column 0, Row 0
+Column 2, Row 1 => Column 1, Row 0
+Column 2, Row 2 => Column 2, Row 0
+
+or 
+
+Column 0, Row 0 => Column 0, Row 2
+Column 1, Row 0 => Column 0, Row 1
+Column 2, Row 0 => Column 0, Row 0
+
+Column 0, Row 1 => Column 1, Row 2
+Column 1, Row 1 => Column 1, Row 1
+Column 2, Row 1 => Column 1, Row 0
+
+Column 0, Row 2 => Column 2, Row 2
+Column 1, Row 2 => Column 2, Row 1
+Column 2, Row 2 => Column 2, Row 0
+
+************** Exercise 5 **************
+Assignment: Write a function that takes two sorted arrays as arguments,
+            and returns a new array that contains all the elements from
+            both input arrays in sorted order.
+
+
+Input: Two sorted arrays
+Output: A single array consisting of the values in both arrays sorted in order
+Rules:
+    -Do not use the sort method
+    -Do not mutate the input array
+Algorithm:
+    -Initialize a variable "result" with an empty array
+    -Create a loop
+    -Initialize a variable "firstArrayIndex" with the value 0
+    -Initialize a variable "secondArrayIndex" with the value 0
+    -Create a while loop. Within the loop:
+        -Check that the value in the firstArrayIndex and secondArrayIndex variables are less than the length of their corrosponding arrays
+            -If the value in one of the variables is not less, push the value in the other variable and 'continue' with next loop iteration
+            -If the value of both of the variables is not less, break out of the loop
+        -Check which value is smaller: the one at firstArrayIndex or secondArrayIndex
+        -Push that value to "result"
+        -Increment the corrosponding variable by 1 (firstArrayIndex or secondArrayIndex)
+    -Return value in result variable
+    

@@ -3,7 +3,7 @@
 function transpose(matrix) {
   let transposedMatrix = [];
   
-  for (let i = 0; i < matrix.length; i +=1) {
+  for (let i = 0; i < matrix.length; i += 1) {
     transposedMatrix.push(matrix.map(subArray => subArray[i]));
   }
   
@@ -24,9 +24,19 @@ console.log(matrix);         // [[1, 5, 8], [4, 7, 2], [3, 9, 6]]
 
 // Further Exploration
 function transposeInPlace(matrix) {
-  for (let i = 0; i < matrix.length; i +=1) {
-    
-  }  
+  let matrixCopy = JSON.parse(JSON.stringify(matrix));
+  let row;
+  let column = 0;
+  
+  for (let i = 0; i < matrix.length; i += 1) {
+    row = 0;
+    for (let subI = 0; subI < matrix[i].length; subI += 1) {
+      matrix[i][subI] = matrixCopy[row][column];
+      row += 1;
+    }
+    column += 1;
+  }
+  return matrix;
 }
 
 let matrix = [
