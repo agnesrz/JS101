@@ -95,4 +95,27 @@ Algorithm:
         -Push that value to "result"
         -Increment the corrosponding variable by 1 (firstArrayIndex or secondArrayIndex)
     -Return value in result variable
+
+************** Exercise 6 **************
+Assignment: Write a function that takes an array, and returns a new array that contains the values from the input array in sorted order. 
+
+Input: Array
+Output: Array, sorted
+Rules: 
+    -Assume array consists of all numbers or strings
+    -Use function build in previous exercise
+    -Sort using merge sort algorithm
+        [9, 5, 7, 1] -->
+        [[9, 5], [7, 1]] -->
+        [[[9], [5]], [[7], [1]]] -->
+        [[5, 9], [1, 7]] -->
+        [1, 5, 7, 9]
+Algorithm:
+    -Divide the elemnts in the array into nested arrays, each containing two elements
+        -Handle case where odd number of elements
     
+    -Divide the elements in each sub-array so that each is nested one level deeper in its own sub-array
+    -Compare the elements in the first two arrays, and return a single array in which the elements are sorted in order
+    -Compare the elements in this new array to the elements in the third array, and return a single array in which ''
+    -Continue the comparing the result array to the next array and returning a single array until there are no arrays left to compare
+    -Return the result
