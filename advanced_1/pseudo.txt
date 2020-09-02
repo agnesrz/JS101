@@ -113,7 +113,6 @@ Rules:
 Algorithm:
     -Divide the elemnts in the array into nested arrays, each containing two elements
         -Handle case where odd number of elements
-    
     -Divide the elements in each sub-array so that each is nested one level deeper in its own sub-array
     -Compare the elements in the first two arrays, and return a single array in which the elements are sorted in order
     -Compare the elements in this new array to the elements in the third array, and return a single array in which ''
