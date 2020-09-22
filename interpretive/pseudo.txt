@@ -44,3 +44,57 @@ Algorithm:
     -if letter is located within array, continue; if not, return 'false'
     -remove sub-array containing letter from the array
   -return true
+ 
+************************ Exercise 4 ************************
+Input: Odd number representing grid size (i.e., 9 = 9x9 grid)
+Output: 8-pointed star displayed on that grid
+Rules:
+    -Validate input?
+    -Smallest grid size is 7x7
+    -Star pattern (7x7 grid):
+        *  *  *     Always 3 stars w/2 spaces between them
+         * * *      Always 3 stars w/1 space between them
+          ***       Always 3 stars w/no spaces btwn them
+        *******     Widest part of star = to grid width
+          ***       Always 3 stars w/no spaces btwn them
+         * * *      Always 3 stars w/1 space between them
+        *  *  *     Always 3 stars w/2 spaces between them
+    -Star pattern (9x9 grid)
+        *   *   *
+         *  *  *
+          * * *
+           ***
+        *********
+           ***
+          * * *
+         *  *  *
+        *   *   
+Algorithm (Star formula);
+        Line 1: y*x*x*; y (represents outer spaces) = 0; x (represents inner spaces) = grid size - 3 / 2
+        Line 2: y*x*x*; y  = y + 1; x = x (from Line 1) - 1
+        Line 3: y*x*x*; y = y + 1; x = x (from Line 2) - 1
+        ...continue until x = 0
+        Center Line: stars printed grid # of times (no spaces)
+        Next line: y*x*x*; y = grid size - 3 / 2; x = 0;
+        Next line: y = y (from previous line) + 1; x = x (from prev line) + 1
+        ...continue until y = 0;
+        
+Algorithm (Algorithm):
+    -Print top half of star
+        -Initialize outerSpaces variable and set to 0
+        -Initialize innerSpaces variable and set to (grid size - 3) / 2
+        -Initialize a do/while loop; the stopping condition is innerSpaces = 0;
+            -During each iteration:
+                -Print y*x*x* (where y = " ".repeat(outerSpaces) and x = " ".repeat(innerSpaces);
+                -Increase outerSpaces by 1
+                -Decrease innerSpaces by 1
+    -Print center of star
+        -Print gridSize number of stars
+    -Print bottom half of star
+        -Same procedure as printing top half of star, except following:
+            -Initialize outerSpaces variable to (grid size - 3) / 2
+            -Initialize innerSpaces variable to 0
+            -During each iteration
+                -Decrease outerSpaces by 1
+                -Increase innerSpaces
+    
