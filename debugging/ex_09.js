@@ -5,14 +5,13 @@ function toDate(string) {//["2018-07-30"]
 const TODAY = toDate("2018-08-05");
 
 function toString(date) {
-  let month = String(date.getMonth());
-  if (month.length == 1) month = '0' + month;
-  
+  let month = String(date.getMonth() + 1);
+  if (month.length === 1) month = '0' + month;
+
   let day = String(date.getUTCDate());
-  if (day.length == 1) day = '0' + day;
-  
+  if (day.length === 1) day = '0' + day;
+
   return `${date.getFullYear()}-${month}-${day}`;//use getFullYear; use getUTCDate();
-  
 }
 
 function isInThePast(date) {//2018-07-30T00:00:00.000Z
@@ -45,11 +44,9 @@ let offeredClasses = {
   "Discover Parachuting": ["2018-11-02"]//weekday
 };
 
-function getCompatibleEvents(classes, calendar) {
+function getCompatibleEvents(classes, calendar) {// offeredClasses, myCalendar
   function isAvailable(date) {
     let dateStr = toString(date);//[2018-09-10, 2018-09-11]
-    console.log(dateStr);
-    console.log(calendar[dateStr]);
     return !calendar[dateStr] || calendar[dateStr].length === 0;
   }
 
